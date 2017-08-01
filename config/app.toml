@@ -1,0 +1,100 @@
+[system]
+appname = "gintest"
+host = "127.0.0.1"
+port = 8080
+runmode = "debug" #debug/release/test
+[logs]
+path = "logs"
+[jwt]
+path = "auth.key"
+[check]
+sqlinjection = "select|update|and|or|delete|insert|trancate|char|chr|into|substr|ascii|declare|exec|count|master|into|drop|execute"
+[es]
+master = "http://10.2.1.144:9200/"
+slave = "http://10.2.1.144:9200/"
+username = "elastic"
+password = "changeme"
+scrollKeep = "5m"
+[router]
+routers = '{
+    "post": [{
+    "post": {
+        "data": {
+            "user": "123",
+            "password": "456"
+        },
+        "session": [
+            {
+                "k": "user_session",
+                "v": "session"
+            }
+        ],
+        "cookie": [
+            {
+                "k": "user_cookie",
+                "v": "cookie"
+            }
+        ]
+    }
+}],
+    "get":[{
+    "get": {
+        "data": {
+            "user": "123",
+            "password": "456"
+        },
+        "session": [
+            {
+                "k": "user_session",
+                "v": "session"
+            }
+        ],
+        "cookie": [
+            {
+                "k": "user_cookie",
+                "v": "cookie"
+            }
+        ]
+    }
+}],
+    "put":[{
+    "put": {
+        "data": {
+            "user": "123",
+            "password": "456"
+        },
+        "session": [
+            {
+                "k": "user_session",
+                "v": "session"
+            }
+        ],
+        "cookie": [
+            {
+                "k": "user_cookie",
+                "v": "cookie"
+            }
+        ]
+    }
+}],
+    "delete":[{
+    "delete": {
+        "data": {
+            "user": "123",
+            "password": "456"
+        },
+        "session": [
+            {
+                "k": "user_session",
+                "v": "session"
+            }
+        ],
+        "cookie": [
+            {
+                "k": "user_cookie",
+                "v": "cookie"
+            }
+        ]
+    }
+}]
+}'
